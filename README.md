@@ -1,4 +1,4 @@
-# Matching Engine
+# Alumni DB 
 This is the matching engine we are building to match students with each other &amp; ideas!
 
 To clone the app, run in terminal:
