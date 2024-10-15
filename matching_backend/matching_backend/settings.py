@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-3_x2*n-)dl*zbvqj%p*^mvz6d!%&^q67kf3$(f%g*o(a_gp%*a
 DEBUG = True
 
 ALLOWED_HOSTS = []
-# CSRF_TRUSTED_ORIGINS = ['https://matching-engine-production.up.railway.app']
+# CSRF_TRUSTED_ORIGINS = ['matching-engine-p7v6.onrender.com']
 
 
 # Application definition
