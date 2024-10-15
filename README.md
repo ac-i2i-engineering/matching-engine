@@ -24,6 +24,24 @@ python manage.py makemigrations
 python manage.py migrate
 python manage.py runserver
 ```
+# System Architecture
+
+```mermaid
+graph TD
+    A[Upload CSV File] -->|CSV File| B[clean_and_create_users]
+    B --> J[standardize and create_user_profiles]
+    
+    J --> |CSV FileUserProfile Instances Created| L[form_teams]
+    
+    L --> M[calculate_final_scores from user_profiles]
+    M --> N[calculate_cosine_similarity from user_profiles]
+    M --> O[calculate_interests_goals_scores from user_profiles]
+    
+    L --> P[Form Initial Teams based on roles]
+    P --> Q[Match Best Engineer and Finance based on scores]
+    Q --> R[Handle Leftover Users & Create Final Teams]
+    R --> |Team Data| U[Render Teams in HTML]
+```
 
 # CI/CD Testing & Deployment Pipeline
 
