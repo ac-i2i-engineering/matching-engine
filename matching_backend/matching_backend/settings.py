@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-3_x2*n-)dl*zbvqj%p*^mvz6d!%&^q67kf3$(f%g*o(a_gp%*a
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['matching-engine-p7v6.onrender.com']
 # CSRF_TRUSTED_ORIGINS = ['matching-engine-p7v6.onrender.com']
 
 
