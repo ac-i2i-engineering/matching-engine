@@ -10,7 +10,7 @@ from datetime import datetime
 
 @dataclass
 class UserProfile:
-    """Data class representing a user's profile with all relevant matching attributes."""
+    """Data class representing a user's profile with relevant matching attributes."""
     user_id: str
     role: str  # 'engineer', 'finance', etc.
     interests: List[str]
