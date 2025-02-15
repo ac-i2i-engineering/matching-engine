@@ -35,47 +35,21 @@ python manage.py runserver
 # System Architecture
 
 ```mermaid
-flowchart LR
- subgraph TOP["SYSTEM ARCHITECTURE"]
-    direction TB
-        A["A"]
-        B["B"]
-  end
- subgraph A["FRONT END"]
-    direction TB
-        AA[/"upload CSV file"/]
-        AB[/"print formed_teams"/]
-  end
- subgraph B["BACK END"]
-    direction TB
-        BA[/"read CSV File"/]
-        BB{"contains_explected_cols"}
-        BC(["throw error"])
-        BD["clean data"]
-        BJ["standardize and create_user_profiles"]
-        BL["form_teams"]
-        BM["calculate_final_scores from user_profiles"]
-        BN["calculate_cosine_similarity from user_profiles"]
-        BO["calculate_interests_goals_scores from user_profiles"]
-        BP["Form Initial Teams based on roles"]
-        BQ["Match Best Engineer and Finance based on scores"]
-        BR["Handle Leftover Users & Create Final Teams"]
-        BU["Render Teams in HTML"]
-  end
-    BA --> BB
-    BB -- no --> BC
-    BB -- yes --> BD
-    BD --> BJ
-    BJ -- CSV FileUserProfile Instances Created --> BL
-    BL --> BM & BP
-    BM --> BN & BO
-    BN --> BQ
-    BO --> BQ
-    BP --> BQ
-    BQ --> BR
-    BR -- Team Data --> BU
-    BU -- Formed Teams --> AB
-    AA -- CSV File --> BA
+graph TB
+    A["Read CSV File"] --> B{Contains Expected Cols?}
+    B -- No --> C["Throw Error"]
+    B -- Yes --> D["Clean Data"]
+    D --> J["Standardize & Create User Profiles"]
+    J --> L["Form Teams"]
+    L --> M["Calculate Final Scores"]
+    L --> P["Form Initial Teams (Roles)"]
+    M --> N["Calculate Cosine Similarity"]
+    M --> O["Calculate Interests/Goals Scores"]
+    N --> Q["Match Best Engineer & Finance"]
+    O --> Q
+    P --> Q
+    Q --> R["Handle Leftovers & Final Teams"]
+    R --> U["Render Teams in HTML"]
 ```
 
 # Expected Input CSV data format
