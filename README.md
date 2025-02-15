@@ -1,14 +1,21 @@
-# Matching Engine
-This is the matching engine we are building to match students with each other &amp; ideas!
+<h1 align="center">Matching Engine</h1>
 
-To clone the app, run in terminal:
+The matching engine is built to match students with each other &amp; ideas!
+
+This matching engine streamlines the formation of three-person student teams, optimizing for collaboration and project success. It processes student data from a CSV file, incorporating information such as interests, project ideas, and goals. By leveraging cosine similarity calculations, the engine identifies students with closely related intellectual pursuits while ensuring a balanced distribution of technical, financial, and other essential skills critical for scaling up team productivity.
+
+The program computes cosine similarity scores to analyze domains of Interest, majors, project ideas, and participation goals. This approach guarantees that each team is strategically composed of members with expertise from different domains at most.
+
+# Installation
+
+To clone the app, run in the terminal:
 
 ```bash
 git clone https://github.com/ac-i2i-engineering/matching-engine.git
 cd matching-engine
 ```
 
-Set-up a virtual environment and activate it to "containerize" the dependencies:
+Set up a virtual environment and activate it to "containerize" the dependencies:
 
 ```bash
 python3 -m venv env
@@ -24,24 +31,31 @@ python manage.py makemigrations
 python manage.py migrate
 python manage.py runserver
 ```
+
 # System Architecture
 
 ```mermaid
-graph TD
-    A[Upload CSV File] -->|CSV File| B[clean_and_create_users]
-    B --> J[standardize and create_user_profiles]
-    
-    J --> |CSV FileUserProfile Instances Created| L[form_teams]
-    
-    L --> M[calculate_final_scores from user_profiles]
-    M --> N[calculate_cosine_similarity from user_profiles]
-    M --> O[calculate_interests_goals_scores from user_profiles]
-    
-    L --> P[Form Initial Teams based on roles]
-    P --> Q[Match Best Engineer and Finance based on scores]
-    Q --> R[Handle Leftover Users & Create Final Teams]
-    R --> |Team Data| U[Render Teams in HTML]
+graph TB
+    A["Read CSV File"] --> B{Contains Expected Cols?}
+    B -- No --> C["Throw Error"]
+    B -- Yes --> D["Clean Data"]
+    D --> J["Standardize & Create User Profiles"]
+    J --> L["Form Teams"]
+    L --> M["Calculate Final Scores"]
+    L --> P["Form Initial Teams (Roles)"]
+    M --> N["Calculate Cosine Similarity"]
+    M --> O["Calculate Interests/Goals Scores"]
+    N --> Q["Match Best Engineer & Finance"]
+    O --> Q
+    P --> Q
+    Q --> R["Handle Leftovers & Final Teams"]
+    R --> U["Render Teams in HTML"]
 ```
+
+# Expected Input CSV data format
+|Timestamp|Email Address|Full Name|Class Year|Major|Additional Major 1|Additional Major 2|Domains of Interest|Do you have an idea(big or small)?|What is your idea?|What stage are you at?|What role are you interested in taking on a team?|Has your team been registered?|If your team has not registered enter your email below and we will send you the form|
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+|     |     |     |     |     |     |     |     |     |     |     |     |     |     |
 
 # CI/CD Testing & Deployment Pipeline
 
@@ -49,7 +63,6 @@ We use modularized `pytest-django`-based unit-tests and `GitHub Actions` to test
 
 ![image](https://github.com/user-attachments/assets/d51e5950-e859-4f95-bec9-98fb41eb450e)
 ![image](https://github.com/user-attachments/assets/abe2b142-8e5a-4bde-80d3-e5f5c4c7bfae)
-
 
 # Demo & screenshots: (Last updated 10th Sept, 2024)
 
