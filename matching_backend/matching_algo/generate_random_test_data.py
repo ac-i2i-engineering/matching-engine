@@ -13,6 +13,55 @@ idea_stages = ["Concept", "Seed stage", "Development", "Prototype"]
 roles = ["Business Strategy", "Engineering", "Financial"]
 
 def generate_random_student():
+    """
+    Generate a random student profile with various attributes for an entrepreneurship program.
+    
+    This function creates a synthetic student profile by randomly selecting values
+    from predefined lists of possible attributes including names, majors, interests,
+    and goals. It also generates a random timestamp within the past week for the
+    submission time.
+    
+    Returns
+    -------
+    list
+    -------
+    list
+        A list containing the following student information in order:
+        - timestamp : str
+            Submission time in format 'MM/DD/YYYY HH:MM:SS'
+        - email : str
+            Generated student email in format 'firstinitiallastname##@amherst.edu'
+        - full_name : str
+            Student's full name
+        - class_year : int
+            Expected graduation year
+        - major : str
+            Primary major
+        - additional_major_1 : str
+            First additional major (if any)
+        - additional_major_2 : str
+            Second additional major (if any)
+        - domains_of_interest : str
+            Comma-separated list of interest areas
+        - has_idea : str
+            'Yes' or 'Not yet'
+        - idea : str
+            Brief description of business idea (if has_idea is 'Yes')
+        - idea_stage : str
+            Current stage of idea development (if has_idea is 'Yes')
+        - role : str
+            Preferred role in team
+        - goals_for_lab : str
+            Comma-separated list of goals
+        - additional_info : str
+            Any additional information (empty by default)
+        - has_team : str
+            Team status (default: 'No – match me with a team')
+        - team_registered : str
+            Team registration info (empty by default)
+        - email_for_form : str
+            Additional email for form (empty by default)
+    """
     timestamp = datetime.now() - timedelta(days=random.randint(0, 7), hours=random.randint(0, 23), minutes=random.randint(0, 59))
     first_name = random.choice(first_names)
     last_name = random.choice(last_names)
@@ -69,6 +118,34 @@ with open('form_responses.csv', 'w', newline='') as outfile:
         "Do you already have a team?", "Has your team been registered?",
         "If your team has not registered enter your email below and we will send you the form."
     ])
+
+    """
+Generate synthetic student survey response data and write it to a CSV file.
+This function creates a CSV file with randomly generated student responses,
+including personal information, academic details, and project preferences.
+The data is meant to simulate responses from a project/lab signup form.
+
+Parameters
+----------
+num_students : int
+    The number of synthetic student records to generate. Defaults to 500 but
+    can be modified to generate more or fewer records.
+
+Output
+-------
+form_responses.csv
+    A CSV file containing the generated student data with headers and random
+    responses for each field.
+
+Notes
+-----
+The generated fields include:
+    - Basic info (timestamp, email, name)
+    - Academic info (class year, majors)
+    - Project preferences (domains, ideas, roles)
+    - Team status and additional information
+"""
+
     
     # Generate and write random student data
     for _ in range(num_students):
