@@ -4,7 +4,10 @@ from matching_algo.models import UserProfile
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 
-"""
+
+def calculate_cosine_similarity(user_profiles):  
+
+    """
 Calculate cosine similarities between pairs of user profiles.
 
 This function computes pairwise cosine similarity scores between all user profiles
@@ -34,7 +37,6 @@ The function processes three main components of each user profile:
 The similarity calculation uses TF-IDF vectorization to account for the
 importance of terms within the context of all profiles being compared.
 """
-def calculate_cosine_similarity(user_profiles):  
     # load users from db
     
     cosine_similarities = [[0 for _ in range(len(user_profiles))] for _ in range(len(user_profiles))]

@@ -1,6 +1,10 @@
 from django.db import models
 
-"""
+
+
+class UserProfile(models.Model):
+
+    """
     Represents a user profile with personal details, interests, goals, and roles.
     This model stores user-related information, including name, academic interests,
     professional goals, and preferred roles in projects. It also provides fields
@@ -64,8 +68,6 @@ from django.db import models
     __str__()
         Returns the user's name as the string representation of the object.
 """
-
-class UserProfile(models.Model):
     # Add name field
     name = models.CharField(max_length=255, default='Dhyey Mavani')
     

@@ -6,8 +6,10 @@ from matching_algo.create_teams import form_teams
 from matching_algo.models import UserProfile
 
 import os
+# Create your views here.
+def index(request):
 
-"""
+    """
     Handle file upload, process user data, and form teams.
     This function processes a CSV file uploaded via a POST request, saves it to the server,
     cleans and creates user profiles from the file, and then forms teams based on the user data.
@@ -24,9 +26,6 @@ import os
     HttpResponse
         A rendered HTML response displaying the formed teams.
 """
-
-# Create your views here.
-def index(request):
     if request.method == 'POST' and request.FILES['csv_file']:
         csv_file = request.FILES['csv_file']
         fs = FileSystemStorage()
